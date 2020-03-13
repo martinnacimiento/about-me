@@ -1,0 +1,1 @@
+docker run --rm -v $PWD:/home/node/app -p 8080:8080 --name mi-page -w /home/node/app -it node bash

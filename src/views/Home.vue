@@ -1,18 +1,31 @@
 <template lang="pug">
   div
-    section(class="hero is-dark is-medium is-bold")
-      div(class="hero-body")
-        div(class="container")
-          h1(class="title") Nacimiento Martin
-          h2(class="subtitle") Analista en Sistemas de Computación
-    section.container.is-fluid.is-fullhd
-      p.title Proyectos
+    section.section
+      .title.has-text-centered Sobre mí
+      .colums
+        .card.column.is-half.is-offset-one-quarter
+          .card-content
+            .has-text-justify
+                .has-text-weight-semibold.is-4 Edad: 
+                  .has-text-weight-normal.is-inline 21
+                .has-text-weight-semibold.is-4 Domicilio: 
+                  .has-text-weight-normal.is-inline Garupá, Misiones, Argentina
+                .has-text-weight-semibold.is-4 Cursando: 
+                  .has-text-weight-normal.is-inline 4to año de Licenciatura en Sistemas de Información
+
+    section.section
+      .title.has-text-centered Proyectos
       .columns.is-multiline
         div(
           v-for="(p, index) in proyectos" :key="index"
           class="column is-3"
         )
           .card
+            .card-image(v-if="p.image")
+              figure.image
+                img(
+                  :src="p.image" 
+                )
             .card-content
               .media
                 .media-content
@@ -20,33 +33,70 @@
                   .subtitle.is-6 {{ p.description }}
                   span(:class="p.status === 'En producción' ? 'tag is-success' : 'tag is-info'") {{ p.status }}
             .card-footer
-              .card-footer-item
-                button(class="button is-primary is-outlined" )
+              div(v-if="p.link").card-footer-item
+                button(@click="href(p.link)" class="button is-primary is-outlined" )
                   span.icon
                     i.fab.fa-github
                   span GitHub
-    footer(class="footer")
-      .content.has-text-centered
-        p {{ new Date().getFullYear() }} — 💻 con ❤️  por Nacimiento Martin
+              div(v-if="p.url").card-footer-item
+                button(@click="href(p.url)" class="button is-primary is-outlined" )
+                  span.icon
+                    i.fas.fa-rocket
+                  span Probar
+    section.section
+      .title.has-text-centered Línea de tiempo
+      px-timeline
 </template>
 
 <script>
 // @ is an alias to /src
-
+import PxTimeline from "@/components/PxTimeline";
 export default {
   name: "home",
-  components: {},
-  data () {
+  components: { PxTimeline },
+  data() {
     return {
       proyectos: [
-        { name: "CV", description: "Es mi curriculum vitae hecho con Vue y Vuetify" ,link: "", status: "En producción"},
-        { 
-          name: "Crypto Exchange", 
-          description: "Proyecto para obtener las cotizaciones de las cryptomonedas mas importantes a través de la API REST de Coincap." ,
-          link: "", 
-          status: "En producción"},
-        { name: "Cuanto es?", description: "Convertidor de monedas de varios países" ,link: "", status: "En desarrollo"},
+        {
+          name: "CV",
+          image: "",
+          description: "Es mi curriculum vitae hecho con Vue y Vuetify",
+          link: "https://github.com/martinnacimiento/cv",
+          url: "https://martinnacimiento.github.io/cv/",
+          status: "En producción"
+        },
+        {
+          name: "Crypto Exchange",
+          image: "",
+          description:
+            "Proyecto para obtener las cotizaciones de las cryptomonedas mas importantes a través de la API REST de Coincap.",
+          link: "https://github.com/martinnacimiento/platzi-exchange",
+          url: "https://cryptoxchange.netlify.com/",
+          status: "En producción"
+        },
+        {
+          name: "Octolion Ecommerce",
+          image: "",
+          description:
+            "Proyecto ecommerce para visualizar y ver detalles de productos, con CRUD a través de API RESTful.",
+          link: "https://github.com/martinnacimiento/api-restful-express.js",
+          url: "https://octolion.martinnacimiento98.now.sh/",
+          status: "En producción"
+        },
+        {
+          name: "Cuánto es?",
+          image: "",
+          description: "Convertidor de monedas de varios países",
+          link: "",
+          url: "",
+          status: "En desarrollo"
+        }
       ]
+    };
+  },
+  methods: {
+    href(url) {
+      window.open(url, "__blank");
     }
   }
 };
