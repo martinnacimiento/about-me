@@ -28,18 +28,18 @@
                 )
             .card-content
               .media
-                .media-content
+                .media-content.mi-padding
                   .title.is-4 {{ p.name }}
                   .subtitle.is-6 {{ p.description }}
-                  span(:class="p.status === 'En producción' ? 'tag is-success' : 'tag is-info'") {{ p.status }}
+                  span(:class="p.status === 'En producción' ? 'tag mis-success' : 'tag mis-info'") {{ p.status }}
             .card-footer
               div(v-if="p.link").card-footer-item
-                button(@click="href(p.link)" class="button is-primary is-outlined" )
+                button(@click="href(p.link)").mi-button
                   span.icon
                     i.fab.fa-github
                   span GitHub
               div(v-if="p.url").card-footer-item
-                button(@click="href(p.url)" class="button is-primary is-outlined" )
+                button(@click="href(p.url)").mi-button
                   span.icon
                     i.fas.fa-rocket
                   span Probar
@@ -101,3 +101,68 @@ export default {
   }
 };
 </script>
+<style scoped>
+button {
+  border: 0;
+}
+
+span {
+  color: #36cc7c;
+}
+
+mi-padding {
+  padding-bottom: 25px;
+}
+
+button:focus {
+  border: none;
+  outline: 0 !important;
+  outline-style: none;
+}
+
+.card {
+  border: 0;
+  background: rgb(241, 240, 240);
+  box-shadow: 0px -6px 10px white, 0px 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 10px;
+  position: relative;
+}
+
+.card:focus {
+  border: none;
+  outline: 0 !important;
+  outline-style: none;
+}
+
+.tag {
+  border: 0;
+  background: rgb(245, 243, 243);
+  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0px -6px 10px white, 0px 4px 15px rgba(0, 0, 0, 0.20);
+  border-radius: 20px;
+  position: relative;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.mis-success {
+  color: rgb(108, 248, 108);
+}
+
+.mis-info {
+  color: rgb(56, 176, 231);
+}
+
+.mi-button {
+  padding: 5px;
+  margin: 5px;
+  background: rgb(241, 240, 240);
+  border-radius: 5px;
+  font-size: 20px;
+  position: relative;
+  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0px -6px 10px white, 0px 4px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+</style>

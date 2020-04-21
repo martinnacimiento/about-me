@@ -17,4 +17,7 @@ export default {
 <style lang="scss">
 @import "~bulma/css/bulma.css";
 @import "~bulma-timeline/dist/css/bulma-timeline.min.css";
+body {
+  background: rgb(241, 240, 240);
+}
 </style>

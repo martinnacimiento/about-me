@@ -95,7 +95,7 @@ button:hover .is-link {
   border-radius: 50%;
   background: #36cc7c;
   transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0px -6px 10px #36cc7c, 0px 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -6px 10px #3ad884, 0px 4px 15px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 </style>
