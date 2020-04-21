@@ -1,0 +1,20 @@
+{
+    "name": "mi-page-project",
+    "dockerFile": "Dockerfile",
+    "forwardPorts": [8000],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+
+    "extensions": [
+        "mikestead.dotenv",
+        "octref.vetur",
+        "formulahendry.auto-complete-tag",
+        "sdras.vue-vscode-snippets",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "xabikos.javascriptsnippets",
+        "visualstudioexptteam.vscodeintellicode",
+        "tombonnike.vscode-status-bar-format-toggle"
+    ]
+}
